@@ -10,7 +10,7 @@ NUMERATOR=$(echo "${REPLY} * 4438" | bc --mathlib | sed -e 's/[0]*$//g' | sed -e
 
 echo ${NUMERATOR} 
 
-if [ ${NUMERATOR} == ${NUMERATOR} ]
+if [ ${NUMERATOR} -lt 44438 ] && [ ${NUMERATOR} -gt 0 ]
 then 
 	echo ${NUMERATOR}  > /sys/class/backlight/intel_backlight/brightness
 else
