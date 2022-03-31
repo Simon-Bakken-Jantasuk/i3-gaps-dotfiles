@@ -1,0 +1,14 @@
+super + shift + f
+	firefox
+
+super + shift + d
+	dmenu_run -h 45
+
+super + Return
+	alacritty
+
+super + Print
+	maim -s | xclip -sel c -t image/png
+
+super + c
+	clpd
