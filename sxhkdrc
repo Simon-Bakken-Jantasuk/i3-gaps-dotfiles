@@ -1,0 +1,26 @@
+super + shift + f
+	firefox
+
+super + shift + d
+	dmenu_run -h 45
+
+super + Return
+	alacritty
+
+super + Print
+	maim -s | xclip -sel c -t image/png
+
+super + shift + Print 
+	maim -s ~/Media/static/$(date +%s).png 
+
+super + shift + m
+	sh ~/Programming/bash/clpd.sh
+
+XF86AudioLowerVolume
+	pactl set-sink-volume 0 -1%
+
+XF86AudioRaiseVolume
+	pactl set-sink-volume 0 +1%
+
+XF86AudioMute
+	pactl set-sink-volume 0 0%
