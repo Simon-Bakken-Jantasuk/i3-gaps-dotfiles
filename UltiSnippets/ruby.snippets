@@ -1,0 +1,123 @@
+# empty list
+snippet el "empty list" i
+def $1 = []
+endsnippet
+
+# list
+snippet list "list" i
+def $1 = [$2]
+endsnippet
+
+# for sum
+snippet forsum "for sum" i 
+def $1 = 0
+
+arr.each do |i|
+  $1 += $3[i]
+end 
+$0
+endsnippet
+
+# length
+snippet len "length" i
+$1.length
+endsnippet
+
+# for-loop greater
+snippet forl "for-loop greater" i
+(0...$2).each do |i|
+  $0
+end
+endsnippet
+
+# for-loop less
+snippet forg "for-loop less" i
+($2...0).each do |i|
+  $0
+end
+endsnippet 
+
+# random integer between 2 values
+snippet randtwo "makes random integer between 2 values" i 
+def $1 = rand($2..$3)
+endsnippet
+
+# function
+snippet fun "function" i
+def ${1:function_name}(${2:parameter})
+	${3}
+end
+$0
+endsnippet
+
+# random value
+snippet rand "makes random value" i
+rand()
+endsnippet 
+
+# while-loop less
+snippet wl "while-loop less" i 
+while $1 < $2
+	$4
+end
+$0
+endsnippet
+
+# while-loop greater
+snippet wg "while-loop greater" i
+while $1 > $2
+	$4
+end
+$0
+endsnippet
+
+# console-log
+snippet cl "console-log" i 
+puts $1
+$0
+endsnippet
+
+# reverse list
+snippet lrev "reverse list" i 
+${1:array}.reverse()
+$0
+endsnippet
+
+# isNaN
+snippet nan "isNaN" i
+$1.nan?
+$0
+endsnippet
+
+# if-statement
+snippet if "if-statement" i
+if $1
+	$2
+end
+$0
+endsnippet
+
+# prompt
+snippet prompt "prompt" i
+gets.chomp
+endsnippet
+
+# number
+snippet number "number" i
+to_i
+endsnippet
+
+# numberprompt
+snippet numprom "numberprompt" i
+gets.chomp.to_i
+endsnippet
+
+# integer prompt
+snippet intprom "integer prompt" i
+gets.chomp.to_i
+endsnippet
+
+# Yes/no confirm
+snippet confirm "Yes/no confirm" i
+gets.chomp.downcase[0] == "y"
+endsnippet

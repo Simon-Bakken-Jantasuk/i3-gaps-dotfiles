@@ -1,0 +1,258 @@
+snippet table "makes a table" i 
+| Syntax      | Description |
+| ----------- | ----------- |
+| Header      | Title       |
+| Paragraph   | Text        |
+endsnippet
+
+snippet date
+${2:${1:`date +%d`}.`date +%m`}.`date +%Y`
+endsnippet
+
+snippet note "front matter" i
+---
+layout: post
+title: $1 
+author: Simon 
+category: $2 
+---
+$0
+endsnippet
+
+snippet link "makes a link" i
+[${1:title}](${2:link})$0
+endsnippet
+
+snippet img "makes a image" i
+![${1:alt}](${1:link})$0
+endsnippet
+
+snippet blca "makes a blok attribute" i
+{: ${1:attr} }$0
+endsnippet
+
+global !p
+def math():
+	return vim.eval('vimtex#syntax#in_mathzone()') == '1'
+
+def comment(): 
+	return vim.eval('vimtex#syntax#in_comment()') == '1'
+
+def env(name):
+	[x,y] = vim.eval("vimtex#env#is_inside('" + name + "')") 
+	return x != '0' and y != '0'
+
+endglobal
+
+snippet '((\d+)|(\d*)(\\)?([A-Za-z]+)((\^|_)(\{\d+\}|\d))*)/' "Fraction" wrA
+\\frac{`!p snip.rv = match.group(1)`}{$1}$0
+endsnippet
+
+snippet sympy "sympy block " w
+sympy $1 sympy$0
+endsnippet
+
+priority 10000
+snippet 'sympy(.*)sympy' "evaluate sympy" wr
+`!p
+from sympy import *
+x, y, z, t = symbols('x y z t')
+k, m, n = symbols('k m n', integer=True)
+f, g, h = symbols('f g h', cls=Function)
+init_printing()
+snip.rv = eval('latex(' + match.group(1).replace('\\', '') \
+    .replace('^', '**') \
+    .replace('{', '(') \
+    .replace('}', ')') + ')')
+`
+endsnippet
+
+context "math()"
+snippet sr "^2" iA
+^2
+endsnippet
+
+context "math()"
+snippet cb "^3" iA
+^3
+endsnippet
+
+context "math()"
+snippet compl "complement" i
+^{c}
+endsnippet
+
+context "math()"
+snippet td "superscript" i
+^{$1}$0
+endsnippet
+
+context "math()"
+snippet ang "angle" i
+^{\circ}$0
+endsnippet
+
+context "math()"
+snippet // "fraction" iA
+\frac{$1}{$2}$0
+endsnippet
+
+context "math()"
+snippet lim "limit" iA 
+\lim_{$1\to$2}$0
+endsnippet
+
+context "math()"
+snippet rot "sqrt" iA
+\sqrt{$1}$0
+endsnippet
+
+context "math()"
+snippet vec "vector" iA
+\vec{$1}$0
+endsnippet
+
+context "math()"
+snippet bpi "pi" iA
+\Pi$0
+endsnippet
+
+context "math()"
+snippet lpi "pi" iA
+\pi$0
+endsnippet
+
+context "math()"
+snippet lphi "ph" iA
+\phi$0
+endsnippet
+
+context "math()"
+snippet bdel "Delta" iA 
+\Delta$0
+endsnippet
+
+context "math()"
+snippet bom "omega" iA 
+\Omega$0
+endsnippet
+
+context "math()"
+snippet lom "liten omega" iA 
+\omega$0
+endsnippet
+
+context "math()"
+snippet lmu "liten mu" iA 
+\mu$0
+endsnippet
+
+context "math()"
+snippet inf "Infinity" iA
+\infty$0
+endsnippet
+
+context "math()"
+snippet sum "The Sum" iA
+\sum_{$1}^{$2}$0
+endsnippet 
+
+context "math()"
+snippet uint "integral" iA
+\int $1 d$2 $0
+endsnippet
+
+context "math()"
+snippet bint "bestemt integral" iA
+\int_{$1}^{$2} $3 d$4 $0
+endsnippet
+
+context "math()"
+snippet => "implyright" iA
+\Rightarrow$0
+endsnippet
+
+context "math()"
+snippet <= "implyleft" iA
+\Leftarrow$0
+endsnippet
+
+context "math()"
+snippet == "implyleftright" iA
+\Leftrightarrow$0
+endsnippet
+
+snippet mk "Math" wA
+$${1}$`!p
+if t[2] and t[2][0] not in [',', '.', '?', '-', ' ']:
+	snip.rv = ' '
+else:
+	snip.rv = ''
+`$2
+endsnippet
+
+snippet dm "Math" wA
+\[
+${1:${VISUAL}}
+\]$0
+endsnippet
+
+context "math()"
+snippet and "wedge" iA 
+\wedge$0
+endsnippet
+
+context "math()"
+snippet pm "plus and minus" iA
+\pm$0
+endsnippet
+
+context "math()"
+snippet bsig "big sigma" iA
+\Sigma$0
+endsnippet
+
+context "math()"
+snippet != "equals" iA
+\neq $0
+endsnippet
+
+context "math()"
+snippet prop "propto" iA
+\propto$0
+endsnippet
+
+context "math()" 
+snippet box "boxed" iA	
+\boxed{$1}$0
+endsnippet
+
+context "math()"
+snippet fx "function" iA
+f(x)$0
+endsnippet
+
+context "math()"
+snippet dot "ddots" iA
+\dot{$1}$0
+endsnippet
+
+context "math()"
+snippet sin "sin(x)" iA
+\sin{$1}$0
+endsnippet
+
+context "math()"
+snippet cos "cos(x)" iA
+\cos{$1}$0
+endsnippet
+
+context "math()"
+snippet tan "tan(x)" iA
+\tan{$1}$0
+endsnippet
+
+context "math()"
+snippet approx "approximate" iA
+\approx $0
+endsnippet

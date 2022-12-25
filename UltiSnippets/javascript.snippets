@@ -1,0 +1,169 @@
+snippet el "empty list" i
+let $1 = []
+endsnippet
+
+snippet list "list" i
+let $1 = [$2]
+endsnippet
+
+snippet forsum "for sum" i 
+int $1 = 0
+
+for (let i = $2; i < $1.length; i++ ){
+	$1 += $3[i]
+} 
+$0
+endsnippet
+
+snippet len "length" i
+$1.length
+endsnippet
+
+snippet forl "for-loop greater" i
+for (let i = $1; i <$2 $3; i++){
+	$0
+}
+endsnippet
+
+snippet forg "for-loop less" i
+for (let i = $1; i >$2 $3; i++){
+	$0
+}
+endsnippet 
+
+snippet randtwo "makes random integer between 2 values" i 
+let $1 = Math.floor(Math.random() * $2 + $3)
+endsnippet
+
+snippet fun "function" i
+function ${1:function_name}(${2:parameter}) {
+	${3}
+}
+$0
+endsnippet
+
+snippet rand "makes random value" i
+Math.random()
+endsnippet 
+
+snippet wl "while-loop less" i 
+while ($1 <$2 $3){
+	$4
+}
+$0
+endsnippet
+
+snippet wg "while-loop greater" i
+while ($1 >$2 $3){
+	$4
+}
+$0
+endsnippet
+
+snippet cl "console-log" i 
+console.log($1) 
+$0
+endsnippet
+
+snippet lrev "reverse list" i 
+${1:array}.reverse()
+$0
+endsnippet
+
+snippet nan "isNaN" i
+isNan($1)
+$0
+endsnippet
+
+snippet if "if-statement" i
+if ($1){
+
+
+	$2
+}
+$0
+endsnippet
+
+snippet prompt "prompt" i
+prompt()
+endsnippet
+
+snippet number "number" i
+Number()
+endsnippet
+
+snippet numprom "numberprompt" i
+Number(prompt($1))$0
+endsnippet
+
+snippet intprom "integer prompt" i
+parseInt(prompt($1))$0
+endsnippet
+
+snippet confirm "Yes/no confirm" i
+confirm()
+endsnippet
+
+snippet comment "comment layout" bA 
+/* 
+* function ${1:funksjon}($2)
+*     ${3:beskrivelse} 
+* PARAMETRE
+*      ($4) $5 
+*      ($6) $7 
+* RETUR
+*      ($8) $9 
+*/
+
+$0
+endsnippet
+
+snippet abc "abc" i
+let alfabet = "abcdefghijklmnopqrstuvwxyzæøå"
+endsnippet
+
+snippet vokal "vokal" i
+let vokal = "aeiouyæøå"
+endsnippet
+
+snippet pop "removes last element in the back of array" i
+${1:array}.pop()$0
+endsnippet
+
+snippet push "pushes new element in the back of array" i
+${1:array}.push()
+endsnippet
+
+snippet unshift "pushes new element in the front of array" i
+${1:array}.unshift()
+endsnippet
+
+snippet shift "removes new element in the front of array" i
+${1:array}.shift()
+endsnippet
+
+snippet splice "removes element in array" i
+${1:array}.splice(${2:start},${3:end},${4:increment})
+endsnippet
+
+snippet objectlength "checks if object has any property" i 
+Object.keys(${1:object})
+$0
+endsnippet
+
+snippet com "makes a Javascript comment" i
+/*$1*/$0
+endsnippet
+
+snippet classcons "makes a class with a constructor" i
+class $1{
+	constructor($2){
+	$3
+	}
+}
+endsnippet
+
+snippet this "declares a object" i
+this.${1:object}
+endsnippet
+
